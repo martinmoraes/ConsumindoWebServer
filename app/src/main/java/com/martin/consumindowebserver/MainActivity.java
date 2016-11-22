@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void buscar(View view) {
-        Log.d("MEU_APP", "Entrou no buscar");
         EditText cepEditText = (EditText) findViewById(R.id.cepEditText);
+        final EditText grandeAreaEditText = (EditText) findViewById(R.id.grandeAreaEditText);
 
         AsyncHttpClient cliente = new AsyncHttpClient();
         String url = "https://viacep.com.br/ws/" +
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        Log.d("MEU_APP", response.toString());
+                        Log.d("MEUAPP", response.toString());
 
                         Gson gson = new GsonBuilder().create();
                         CEP umCEP = null;
@@ -47,32 +47,33 @@ public class MainActivity extends AppCompatActivity {
                             umCEP = gson.fromJson(response.toString(), CEP.class);
                         }
                         Log.d("MEUAPP",umCEP.toString());
+                        grandeAreaEditText.append(umCEP.toString()+"\n\n");
                     }
 
                     @Override
                     public void onSuccess(int statusCode, Header[] headers,
                                           JSONArray response) {
-                        Log.d("MEU_APP", response.toString());
+                        Log.d("MEUAPP", response.toString());
                     }
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, Throwable
-                            throwable,
-                                          JSONArray errorResponse) {
-                        Log.e("MEU_APP", "onFailure JSONArray: " + statusCode, throwable);
+                            throwable, JSONArray errorResponse) {
+                        Log.e("MEUAPP", "onFailure JSONArray: " + statusCode, throwable);
                     }
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, String
-                            responseString,
-                                          Throwable throwable) {
-                        Log.e("MEU_APP", "onFailure STRING: " + statusCode, throwable);
+                            responseString, Throwable throwable) {
+                        Log.e("MEUAPP", "onFailure STRING: " + statusCode, throwable);
+                        grandeAreaEditText.append(statusCode + responseString+"\n\n");
                     }
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, Throwable
                             throwable, JSONObject errorResponse) {
-                        Log.e("MEU_APP", "onFailure JSONObject: " + statusCode, throwable);
+                        Log.e("MEUAPP", "onFailure JSONObject: " + statusCode, throwable);
+                        grandeAreaEditText.append(statusCode + errorResponse.toString()+"\n\n");
                     }
                 });
     }

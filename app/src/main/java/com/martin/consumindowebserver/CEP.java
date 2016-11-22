@@ -5,16 +5,16 @@ package com.martin.consumindowebserver;
  */
 public class CEP {
 
-    String gia;
-    String bairro;
-    String complemento;
-    String cep;
-    String ibge;
-    String uf;
-    String localidade;
-    String logradouro;
-    String unidade;
-
+    private String gia;
+    private String bairro;
+    private String complemento;
+    private String cep;
+    private String ibge;
+    private String uf;
+    private String localidade;
+    private String logradouro;
+    private String unidade;
+    private boolean erro;
 
     @Override
     public String toString() {
@@ -28,6 +28,7 @@ public class CEP {
                 ", localidade='" + localidade + '\'' +
                 ", logradouro='" + logradouro + '\'' +
                 ", unidade='" + unidade + '\'' +
+                ", erro=" + erro +
                 '}';
     }
 }

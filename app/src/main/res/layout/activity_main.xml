@@ -34,4 +34,21 @@
         android:layout_below="@+id/cepEditText"
         android:layout_centerHorizontal="true"
         android:onClick="buscar"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/grandeAreaEditText"
+        android:background="@null"
+        android:inputType="textMultiLine"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        />
 </RelativeLayout>
+
+    <!--
+        -->
