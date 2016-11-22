@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                             umCEP = gson.fromJson(response.toString(), CEP.class);
                         }
                         Log.d("MEUAPP",umCEP.toString());
-                        grandeAreaEditText.append(umCEP.toString()+"\n\n");
+                        grandeAreaEditText.setText(umCEP.toString()+"\n\n"+ grandeAreaEditText.getText());
                     }
 
                     @Override
@@ -66,14 +66,14 @@ public class MainActivity extends AppCompatActivity {
                     public void onFailure(int statusCode, Header[] headers, String
                             responseString, Throwable throwable) {
                         Log.e("MEUAPP", "onFailure STRING: " + statusCode, throwable);
-                        grandeAreaEditText.append(statusCode + responseString+"\n\n");
+                        grandeAreaEditText.setText(statusCode + responseString+"\n\n"+ grandeAreaEditText.getText());
                     }
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, Throwable
                             throwable, JSONObject errorResponse) {
                         Log.e("MEUAPP", "onFailure JSONObject: " + statusCode, throwable);
-                        grandeAreaEditText.append(statusCode + errorResponse.toString()+"\n\n");
+                        grandeAreaEditText.setText(statusCode + errorResponse.toString()+"\n\n"+ grandeAreaEditText.getText());
                     }
                 });
     }
